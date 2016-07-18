@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BTtrax</string>
+    <string name="illegal_move">ルール違反です！違う場所または違うパネルをおいてください。</string>
+    <string name="red_turn">赤プレイヤーのターンです！</string>
+    <string name="white_turn">白プレイヤーのターンです！</string>
+    <string name="red_win">赤プレイヤーの勝利です！</string>
+    <string name="white_win">白プレイヤーの勝利です！</string>
+    <string name="draw_game">引き分けです。お互いに勝利を分かち合いましょう</string>
+    <string name="panel1_description">十字パネルを置くボタン</string>
+    <string name="panel2_description">カーブパネルを置くボタン1</string>
+    <string name="panel3_description">カーブパネルを置くボタン2</string>
+</resources>
