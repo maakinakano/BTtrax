@@ -17,6 +17,7 @@ public class BoardView extends View {
     private int orientX;
     private int orientY;
     private int touchX, touchY;
+    private int addX, addY;
     private Colors turn = Colors.WHITE;
     private Colors winner = Colors.NONE;
 
@@ -45,14 +46,14 @@ public class BoardView extends View {
         orientY = 100;
     }
 
-    public void turnFlip() {
+    private void turnFlip() {
         switch (turn) {
             case RED:
                 turn = Colors.WHITE;
-                break;
+                return;
             case WHITE:
                 turn = Colors.RED;
-                break;
+                return;
             default:
                 throw new RuntimeException();
         }
@@ -91,7 +92,11 @@ public class BoardView extends View {
         return onClickPanel(buttonNum, orientX - size / 2 + touchX, orientY - size / 2 + touchY);
     }
 
-    private boolean onClickPanel(int buttonNum, int x, int y) {
+    public boolean onClickPanel(int buttonNum, int x, int y) {
+        if(size == 1) {
+            addPanel(100, 100, buttonNum * 2 + 1);
+            return true;
+        }
         int tempID;
         Colors neighbor = Colors.NONE;
         Direction neigD = Direction.UP;
@@ -132,6 +137,8 @@ public class BoardView extends View {
         sizeChange();
         winCheck();
         invalidate();
+        addX = x;
+        addY = y;
         touchX = -1;
         touchY = -1;
     }
@@ -143,6 +150,14 @@ public class BoardView extends View {
         if(redF & !whiteF) winner = Colors.RED;
         if(!redF & whiteF) winner = Colors.WHITE;
         if(redF & whiteF) winner = Colors.DRAW;
+    }
+
+    public int getAddX() {
+        return addX;
+    }
+
+    public int getAddY() {
+        return addY;
     }
 
     private boolean roopCheck(Colors colors) {

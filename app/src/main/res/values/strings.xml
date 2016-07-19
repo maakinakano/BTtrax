@@ -4,7 +4,8 @@
     <string name="title">Trax</string>
     <string name="one_player_mode">1 Player Mode</string>
     <string name="two_player_mode">2 Player Mode</string>
-    <string name="BT_mode">Bluetooth Mode</string>
+    <string name="BT_mode_server">BT Server</string>
+    <string name="BT_mode_client">BT Client</string>
     <string name="red_turn">赤プレイヤーのターンです！</string>
     <string name="white_turn">白プレイヤーのターンです！</string>
     <string name="red_win">赤プレイヤーの勝利です！</string>
@@ -13,4 +14,13 @@
     <string name="panel1_description">十字パネルを置くボタン</string>
     <string name="panel2_description">カーブパネルを置くボタン1</string>
     <string name="panel3_description">カーブパネルを置くボタン2</string>
+    <string name="bluetooth_not_available">Bluetoothがサポートされていません</string>
+    <string name="bluetooth_not_accept">Bluetoothを使わないとこのモードは利用できません</string>
+    <string name="bluetooth_connection_failed">接続に失敗しました</string>
+    <string name="player_white">あなたは白プレーヤーです::</string>
+    <string name="player_red">あなたは赤プレーヤーです::</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="try_connection">本当にこの端末に接続してみますか</string>
+    <string name="scanning_requires_permission">Bluetoothデバイスのスキャニングには次の許可が必要です：%s</string>
 </resources>

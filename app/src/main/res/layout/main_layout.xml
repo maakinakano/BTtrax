@@ -60,25 +60,35 @@
         style="?android:attr/buttonBarStyle">
 
         <Button
+            android:id="@+id/server_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/BT_mode"
+            android:text="@string/BT_mode_server"
             android:textSize="@dimen/button_text_size"
             android:textColor="#FF000000"
+            android:onClick="onClickBTMode"
             style="?android:attr/buttonBarButtonStyle"/>
 
 
         <Button
+            android:id="@+id/client_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/BT_mode"
+            android:text="@string/BT_mode_client"
             android:textSize="@dimen/button_text_size"
             android:textColor="#FF000000"
+            android:onClick="onClickBTMode"
             style="?android:attr/buttonBarButtonStyle"/>
 
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/connection_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
