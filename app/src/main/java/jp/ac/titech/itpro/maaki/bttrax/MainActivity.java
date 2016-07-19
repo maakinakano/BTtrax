@@ -17,9 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        boardView = (BoardView)findViewById(R.id.board_view);
-        messageView = (TextView) findViewById(R.id.message_view);
+        setContentView(R.layout.main_layout);
         resources = getResources();
         toast = Toast.makeText(this, resources.getString(R.string.illegal_move), Toast.LENGTH_SHORT);
     }
@@ -51,4 +49,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onClickPlayMode(View v) {
+        setContentView(R.layout.game_layout);
+        boardView = (BoardView)findViewById(R.id.board_view);
+        messageView = (TextView)findViewById(R.id.message_view);
+    }
 }
+

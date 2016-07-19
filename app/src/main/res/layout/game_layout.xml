@@ -14,7 +14,8 @@
         android:id="@+id/message_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/message_text_size"/>
+        android:textSize="@dimen/message_text_size"
+        android:text="@string/white_turn"/>
 
     <jp.ac.titech.itpro.maaki.bttrax.BoardView
         android:id="@+id/board_view"

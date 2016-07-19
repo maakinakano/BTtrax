@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">BTtrax</string>
     <string name="illegal_move">ルール違反です！違う場所または違うパネルをおいてください。</string>
+    <string name="title">Trax</string>
+    <string name="one_player_mode">1 Player Mode</string>
+    <string name="two_player_mode">2 Player Mode</string>
+    <string name="BT_mode">Bluetooth Mode</string>
     <string name="red_turn">赤プレイヤーのターンです！</string>
     <string name="white_turn">白プレイヤーのターンです！</string>
     <string name="red_win">赤プレイヤーの勝利です！</string>
