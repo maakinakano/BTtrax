@@ -35,8 +35,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/one_player_mode"
+            android:text="@string/rule"
             android:textSize="@dimen/button_text_size"
+            android:onClick="onClickRule"
             android:textColor="#FF000000"
             style="?android:attr/buttonBarButtonStyle"/>
 
@@ -44,7 +45,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/two_player_mode"
+            android:text="@string/play_mode"
             android:textSize="@dimen/button_text_size"
             android:onClick="onClickPlayMode"
             android:textColor="#FF000000"

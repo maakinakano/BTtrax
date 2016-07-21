@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 import java.util.Random;
 
 public class TopView extends RelativeLayout {
-    private static final int SIZE = 12;
+    private static final int SIZE = 14;
     private Random random = new Random();
     private int field[][];
 
@@ -66,7 +66,7 @@ public class TopView extends RelativeLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        int width = (canvas.getWidth() < canvas.getHeight()) ? canvas.getWidth()/ SIZE : canvas.getHeight()/ SIZE;
+        int width = (canvas.getWidth() > canvas.getHeight()) ? canvas.getWidth()/ SIZE : canvas.getHeight()/ SIZE;
 
         for(int i = 0; i< SIZE; i++)
             for(int j = 0; j< SIZE; j++) {

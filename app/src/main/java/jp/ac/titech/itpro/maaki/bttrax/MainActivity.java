@@ -7,13 +7,13 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.util.JsonWriter;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,8 +26,7 @@ import java.util.UUID;
 import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
-    private int message_seq = 0;
-    private boolean BTMode = false;
+   private boolean BTMode = false;
     private Colors playerColor = Colors.NONE;
     private static final int REQUEST_ENABLE_BT = 100;
     private static final int REQUEST_DISCOVERABLE = 101;
@@ -75,29 +74,51 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
             } else if(BTMode) {
                 String content = boardView.getAddX()+","+boardView.getAddY()+","+buttonNum;
-                Messenger message = new Messenger(message_seq++, System.currentTimeMillis(), content, devName);
+                Messenger message = new Messenger(content);
                 gameThread.send(message);
             }
         textRedraw();
     }
 
     public void textRedraw() {
-        String s = "";
-        if(playerColor == Colors.RED)
-            s += resources.getString(R.string.player_red);
-        if(playerColor == Colors.WHITE)
-            s += resources.getString(R.string.player_white);
+        if(BTMode) {
+            BTTextRedraw();
+            return;
+        }
+        String s="";
         if(boardView.getWinner() == Colors.RED)
-            s += resources.getString(R.string.red_win);
+            s = resources.getString(R.string.red_win);
         else if(boardView.getWinner() == Colors.WHITE)
-            s += resources.getString(R.string.white_win);
+            s = resources.getString(R.string.white_win);
+        else if(boardView.getWinner() == Colors.DRAW)
+            s = resources.getString(R.string.draw_game);
+        else {
+            if (boardView.getTurn() == Colors.RED)
+                s = resources.getString(R.string.red_turn);
+            else if (boardView.getTurn() == Colors.WHITE)
+                s = resources.getString(R.string.white_turn);
+        }
+        messageView.setText(s);
+    }
+
+    private void BTTextRedraw() {
+        String s = "";
+        if (playerColor == Colors.RED)
+            s += resources.getString(R.string.player_red);
+        else if (playerColor == Colors.WHITE)
+            s += resources.getString(R.string.player_white);
+
+        if(boardView.getWinner() == playerColor)
+            s += resources.getString(R.string.your_win);
+        else if(boardView.getWinner() != playerColor && boardView.getWinner() != Colors.NONE)
+            s += resources.getString(R.string.opponent_win);
         else if(boardView.getWinner() == Colors.DRAW)
             s += resources.getString(R.string.draw_game);
         else {
-            if (boardView.getTurn() == Colors.RED)
-                s += resources.getString(R.string.red_turn);
-            if (boardView.getTurn() == Colors.WHITE)
-                s += resources.getString(R.string.white_turn);
+            if(boardView.getTurn() == playerColor)
+                s += resources.getString(R.string.your_turn);
+            else
+                s += resources.getString(R.string.opponent_turn);
         }
         messageView.setText(s);
     }
@@ -107,6 +128,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.game_layout);
         boardView = (BoardView)findViewById(R.id.board_view);
         messageView = (TextView)findViewById(R.id.message_view);
+    }
+
+    public void onClickRule(View v) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.tantrix.jp/trax/trax_rule.htm")));
     }
 
     public void onClickBTMode(View v) {
